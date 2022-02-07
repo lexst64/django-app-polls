@@ -1,0 +1,7 @@
+# Python
+*.py[c|o]
+__pycache__
+
+# Pip package dists
+dist/
+*.egg-info

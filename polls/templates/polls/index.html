@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <div class="polls">
+        <h2>Active polls</h2>
+        {% if all_question_objects %}
+            <ul>
+                {% for question in all_question_objects %}
+                    <li>
+                        <a href="{% url 'polls:detail' question.id %}">
+                            {{ question.question_text }}
+                            -- Author: {{ question.question_author }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>there are no active polls here</p>
+        {% endif %}
+        {% if waiting_polls_number %}
+        <p>
+            Polls waiting to be published: {{ waiting_polls_number }}
+        </p>
+        {% endif %}
+    </div>
+    <script src="{% static 'polls/app.js' %}"></script>
+</body>
+</html>
